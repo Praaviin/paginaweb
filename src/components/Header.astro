@@ -22,38 +22,37 @@ const currentPath = Astro.url.pathname;
       <span></span>
     </button>
 
+    <nav id="site-navigation" aria-label="Principal" class="site-header__nav">
+      <div class="site-header__nav-head">
+        <p>Menu</p>
+        <button class="site-header__nav-close" type="button" aria-label="Cerrar menu">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <ul>
+        {mainNavigation.map((item) => (
+          <li>
+            <a href={item.href} aria-current={currentPath === item.href ? "page" : undefined}>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <button class="site-header__backdrop" type="button" aria-label="Cerrar menu"></button>
   </div>
 </header>
-
-<nav id="site-navigation" aria-label="Principal" class="site-header__nav">
-  <div class="site-header__nav-head">
-    <p>Menu</p>
-    <button class="site-header__nav-close" type="button" aria-label="Cerrar menu">
-      <span></span>
-      <span></span>
-    </button>
-  </div>
-  <ul>
-    {mainNavigation.map((item) => (
-      <li>
-        <a href={item.href} aria-current={currentPath === item.href ? "page" : undefined}>
-          {item.label}
-        </a>
-      </li>
-    ))}
-  </ul>
-</nav>
-
-<button class="site-header__backdrop" type="button" aria-label="Cerrar menu"></button>
 
 <script>
   const header = document.querySelector(".site-header");
 
   if (header) {
     const toggle = header.querySelector(".site-header__menu-toggle");
-    const closeButton = document.querySelector(".site-header__nav-close");
-    const backdrop = document.querySelector(".site-header__backdrop");
-    const navLinks = document.querySelectorAll(".site-header__nav a");
+    const closeButton = header.querySelector(".site-header__nav-close");
+    const backdrop = header.querySelector(".site-header__backdrop");
+    const navLinks = header.querySelectorAll(".site-header__nav a");
 
     const setMenuState = (open: boolean) => {
       header.classList.toggle("is-nav-open", open);
