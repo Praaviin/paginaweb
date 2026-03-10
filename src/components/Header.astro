@@ -1,9 +1,6 @@
 ---
 import { mainNavigation } from "../data/navigation";
-import { site } from "../data/site";
-import { resolveImage } from "../utils/images";
 
-const logo = resolveImage("images/brand/logo.png");
 const currentPath = Astro.url.pathname;
 ---
 
@@ -13,16 +10,93 @@ const currentPath = Astro.url.pathname;
       <span>CENTRO MEDICO MIRAVERDE</span>
     </a>
 
-    <nav aria-label="Principal" class="site-header__nav">
-      <ul>
-        {mainNavigation.map((item) => (
-          <li>
-            <a href={item.href} aria-current={currentPath === item.href ? "page" : undefined}>
-              {item.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <button
+      class="site-header__menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      aria-label="Abrir menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
   </div>
 </header>
+
+<nav id="site-navigation" aria-label="Principal" class="site-header__nav">
+  <div class="site-header__nav-head">
+    <p>Menu</p>
+    <button class="site-header__nav-close" type="button" aria-label="Cerrar menu">
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+  <ul>
+    {mainNavigation.map((item) => (
+      <li>
+        <a href={item.href} aria-current={currentPath === item.href ? "page" : undefined}>
+          {item.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<button class="site-header__backdrop" type="button" aria-label="Cerrar menu"></button>
+
+<script>
+  const header = document.querySelector(".site-header");
+
+  if (header) {
+    const toggle = header.querySelector(".site-header__menu-toggle");
+    const closeButton = document.querySelector(".site-header__nav-close");
+    const backdrop = document.querySelector(".site-header__backdrop");
+    const navLinks = document.querySelectorAll(".site-header__nav a");
+
+    const setMenuState = (open: boolean) => {
+      header.classList.toggle("is-nav-open", open);
+      document.body.classList.toggle("has-nav-open", open);
+
+      if (toggle instanceof HTMLButtonElement) {
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.setAttribute("aria-label", open ? "Cerrar menu" : "Abrir menu");
+      }
+    };
+
+    const closeMenu = () => setMenuState(false);
+    const handleResize = () => {
+      if (window.innerWidth > 1120) {
+        closeMenu();
+      }
+    };
+
+    if (toggle instanceof HTMLButtonElement) {
+      toggle.addEventListener("click", () => {
+        const isOpen = header.classList.contains("is-nav-open");
+        setMenuState(!isOpen);
+      });
+    }
+
+    if (closeButton instanceof HTMLButtonElement) {
+      closeButton.addEventListener("click", closeMenu);
+    }
+
+    if (backdrop instanceof HTMLButtonElement) {
+      backdrop.addEventListener("click", closeMenu);
+    }
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && header.classList.contains("is-nav-open")) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", handleResize);
+  }
+</script>
