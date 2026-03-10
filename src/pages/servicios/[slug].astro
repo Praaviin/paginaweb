@@ -1,0 +1,47 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import Section from "../../components/Section.astro";
+import WhatsAppCTA from "../../components/WhatsAppCTA.astro";
+import { resolveImage } from "../../utils/images";
+
+export async function getStaticPaths() {
+  const services = await getCollection("services");
+
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service }
+  }));
+}
+
+const { service } = Astro.props;
+const { Content } = await render(service);
+const heroImage = resolveImage(service.data.heroImage);
+const allServices = (await getCollection("services")).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title={service.data.seoTitle ?? service.data.title}
+  description={service.data.seoDescription ?? service.data.excerpt}
+  canonicalPath={`/servicios/${service.slug}`}
+  image={heroImage}
+>
+  <Hero title={service.data.title} intro={service.data.excerpt} image={heroImage} imageAlt={service.data.title} />
+  <Section title="Informacion del servicio">
+    <div class="prose prose--wide center-block">
+      <Content />
+    </div>
+  </Section>
+  <Section title="Otras especialidades">
+    <div class="related-links">
+      {allServices
+        .filter((entry) => entry.slug !== service.slug)
+        .slice(0, 5)
+        .map((entry) => (
+          <a href={`/servicios/${entry.slug}`}>{entry.data.title}</a>
+        ))}
+    </div>
+  </Section>
+  <WhatsAppCTA title={`Solicita informacion sobre ${service.data.title.toLowerCase()}`} />
+</BaseLayout>

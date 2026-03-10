@@ -1,0 +1,181 @@
+---
+---
+
+<div id="indiba-popup" class="indiba-popup" aria-hidden="true">
+  <div class="indiba-popup__backdrop" data-close aria-label="Cerrar overlay"></div>
+  <div class="indiba-popup__content">
+    <button class="indiba-popup__close" aria-label="Cerrar modal" data-close>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    
+    <div class="indiba-popup__body">
+      <div class="indiba-popup__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h3"></path>
+          <path d="M16 12h3"></path>
+          <path d="M8.5 8.5c1.2-1.6 2.3-2.5 3.5-2.5s2.3.9 3.5 2.5"></path>
+          <path d="M8.5 15.5c1.2 1.6 2.3 2.5 3.5 2.5s2.3-.9 3.5-2.5"></path>
+          <circle cx="12" cy="12" r="2.5"></circle>
+        </svg>
+      </div>
+      <h3>Fisioterapia Indiba</h3>
+      <p>Descubre ahora todos los beneficios para tu salud de esta nueva practica.</p>
+      
+      <div class="indiba-popup__actions">
+        <a href="/servicios/tecnologia-avanzada" class="button button--primary">Saber mas</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .indiba-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .indiba-popup.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .indiba-popup__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(45, 44, 42, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .indiba-popup__content {
+    position: relative;
+    background: var(--surface);
+    width: 100%;
+    max-width: 26rem;
+    padding: 3rem 2.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--line);
+    text-align: center;
+    transform: translateY(2rem) scale(0.95);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .indiba-popup.is-visible .indiba-popup__content {
+    transform: translateY(0) scale(1);
+  }
+
+  .indiba-popup__close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-bounce);
+  }
+
+  .indiba-popup__close:hover {
+    color: var(--text);
+    background: var(--bg);
+    transform: scale(1.1) rotate(90deg);
+  }
+
+  .indiba-popup__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    background: var(--bg);
+    color: var(--brand);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--line);
+  }
+
+  .indiba-popup__body h3 {
+    font-size: 1.75rem;
+    margin: 0 0 1rem;
+    color: var(--brand-dark);
+    letter-spacing: -0.02em;
+  }
+
+  .indiba-popup__body p {
+    font-size: 1.05rem;
+    color: var(--text);
+    line-height: 1.6;
+    margin: 0 0 2rem;
+  }
+
+  .indiba-popup__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .indiba-popup__actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+</style>
+
+<script>
+  // Wait for the DOM to be fully loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    const popup = document.getElementById("indiba-popup");
+    if (!popup) return;
+
+    // Optional: Use sessionStorage so it only shows once per browser session.
+    // Uncomment the lines below if it becomes too annoying on every single visit.
+    const hasSeenPopup = sessionStorage.getItem("indiba-popup-seen");
+    
+    // Only show if they haven't seen it this session
+    if (!hasSeenPopup) {
+      // Show popup after 4.5 seconds
+      setTimeout(() => {
+        popup.classList.add("is-visible");
+        popup.setAttribute("aria-hidden", "false");
+        
+        // Mark as seen for this session
+        sessionStorage.setItem("indiba-popup-seen", "true");
+      }, 4500);
+    }
+
+    // Close logic
+    const closeTriggers = popup.querySelectorAll("[data-close]");
+    
+    const closePopup = () => {
+      popup.classList.remove("is-visible");
+      popup.setAttribute("aria-hidden", "true");
+    };
+
+    closeTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", closePopup);
+    });
+
+    // Close on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && popup.classList.contains("is-visible")) {
+        closePopup();
+      }
+    });
+  });
+</script>

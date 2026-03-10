@@ -1,0 +1,12 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F5F1EA"/>
+  <rect x="160" y="170" width="1280" height="560" rx="56" fill="#FFFFFF"/>
+  <circle cx="1130" cy="360" r="150" fill="#DDE9E3"/>
+  <path d="M540 280c-58 40-89 90-89 150 0 97 74 170 170 170s170-73 170-170c0-60-31-110-89-150" stroke="#8A9A86" stroke-width="28" stroke-linecap="round"/>
+  <circle cx="621" cy="351" r="22" fill="#C0B298"/>
+  <circle cx="621" cy="417" r="22" fill="#C0B298"/>
+  <circle cx="621" cy="483" r="22" fill="#C0B298"/>
+  <circle cx="621" cy="549" r="22" fill="#C0B298"/>
+  <text x="900" y="560" fill="#2D2C2A" font-size="74" font-family="Arial, sans-serif" font-weight="700">Quiropractica</text>
+  <text x="900" y="624" fill="#7A7975" font-size="34" font-family="Arial, sans-serif">Ajuste postural y equilibrio vertebral</text>
+</svg>

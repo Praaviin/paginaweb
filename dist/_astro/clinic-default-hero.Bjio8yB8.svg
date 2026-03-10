@@ -1,0 +1,13 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F7F3EC"/>
+  <circle cx="1320" cy="180" r="220" fill="#DCE8E2"/>
+  <circle cx="260" cy="770" r="260" fill="#E7DDD0"/>
+  <rect x="128" y="154" width="726" height="592" rx="52" fill="#FFFFFF"/>
+  <rect x="944" y="254" width="290" height="290" rx="44" fill="#8A9A86"/>
+  <rect x="1086" y="366" width="290" height="290" rx="44" fill="#C0B298"/>
+  <path d="M1046 400h88M1090 356v88" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round"/>
+  <path d="M1176 510c24-34 54-52 90-52 37 0 68 18 92 52" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round"/>
+  <text x="192" y="320" fill="#2D2C2A" font-size="78" font-family="Arial, sans-serif" font-weight="700">Centro Medico Miraverde</text>
+  <text x="192" y="396" fill="#7A7975" font-size="34" font-family="Arial, sans-serif">Atencion multidisciplinar con un enfoque cercano,</text>
+  <text x="192" y="450" fill="#7A7975" font-size="34" font-family="Arial, sans-serif">profesional y pensado para cada persona.</text>
+</svg>

@@ -1,0 +1,8 @@
+<svg width="800" height="1000" viewBox="0 0 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1000" fill="#F6F2EB"/>
+  <circle cx="280" cy="300" r="90" fill="#DCE8E2"/>
+  <circle cx="520" cy="300" r="90" fill="#E6DCD0"/>
+  <rect x="160" y="470" width="480" height="250" rx="44" fill="#FFFFFF"/>
+  <path d="M260 610c38-40 84-60 140-60s102 20 140 60" stroke="#8A9A86" stroke-width="22" stroke-linecap="round"/>
+  <text x="222" y="840" fill="#2D2C2A" font-size="56" font-family="Arial, sans-serif" font-weight="700">Psicologia</text>
+</svg>

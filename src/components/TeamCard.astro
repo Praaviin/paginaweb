@@ -1,0 +1,30 @@
+---
+import { resolveImage } from "../utils/images";
+
+interface Props {
+  name: string;
+  role: string;
+  excerpt: string;
+  specialties: string[];
+  image?: string;
+  isFeatured?: boolean;
+}
+
+const { name, role, excerpt, specialties, image, isFeatured = false } = Astro.props;
+// A clean, soft generic grey placeholder with a person icon using standard neutral greys
+const fallbackImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='1000' viewBox='0 0 800 1000'%3E%3Crect width='800' height='1000' fill='%23F3F4F6'/%3E%3Ccircle cx='400' cy='380' r='100' fill='%239CA3AF'/%3E%3Cpath d='M200 800 C200 650, 300 550, 400 550 C500 550, 600 650, 600 800' fill='%239CA3AF'/%3E%3C/svg%3E";
+---
+
+<article class={`card team-card ${isFeatured ? 'team-card--featured' : ''}`}>
+  <div class="card__image-wrapper">
+    <img src={image ?? fallbackImage} alt={`Imagen de apoyo para ${role}`} class="card__image" loading="lazy" />
+  </div>
+  <div class="card__body">
+    <p class="eyebrow">{role}</p>
+    <h3>{name}</h3>
+    <p>{excerpt}</p>
+    <ul class="tag-list">
+      {specialties.map((specialty) => <li>{specialty}</li>)}
+    </ul>
+  </div>
+</article>

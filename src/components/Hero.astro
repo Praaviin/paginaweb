@@ -1,0 +1,31 @@
+---
+import { resolveImage } from "../utils/images";
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  intro?: string;
+  image?: string;
+  imageAlt?: string;
+}
+
+const { eyebrow, title, intro, image, imageAlt = "" } = Astro.props;
+const fallbackHero = resolveImage("images/misc/clinic-default-hero.svg");
+---
+
+<section class="hero hero--overlay">
+  <div class="shell">
+    <div class="hero__inner">
+      <div class="hero__background">
+        <img src={image || fallbackHero} alt={imageAlt} loading="eager" />
+        <div class="hero__overlay-gradient"></div>
+      </div>
+      <div class="hero__content">
+        {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+        <h1>{title}</h1>
+        {intro && <p class="hero__intro">{intro}</p>}
+        <slot />
+      </div>
+    </div>
+  </div>
+</section>

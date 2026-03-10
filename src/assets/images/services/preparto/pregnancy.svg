@@ -1,0 +1,9 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F7F2ED"/>
+  <rect x="160" y="160" width="1280" height="580" rx="56" fill="#FFFFFF"/>
+  <circle cx="440" cy="320" r="64" fill="#C0B298"/>
+  <path d="M380 600c0-120 24-210 80-270 30-32 68-50 112-50 78 0 140 66 140 148 0 94-74 134-138 134h-64v38" stroke="#8A9A86" stroke-width="28" stroke-linecap="round"/>
+  <path d="M930 350h170M930 430h240M930 510h200" stroke="#D7C6B0" stroke-width="24" stroke-linecap="round"/>
+  <text x="900" y="635" fill="#2D2C2A" font-size="76" font-family="Arial, sans-serif" font-weight="700">Preparto</text>
+  <text x="900" y="700" fill="#7A7975" font-size="34" font-family="Arial, sans-serif">Preparacion fisica, respiracion y acompanamiento</text>
+</svg>

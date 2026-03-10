@@ -1,0 +1,22 @@
+[
+  {
+    "id": "brand-logo",
+    "category": "brand",
+    "title": "Logo principal",
+    "sourceUrl": "https://www.cmmiraverde.org/web/image/website/1/logo/CM%20Miraverde?unique=28103ee",
+    "localPath": "src/assets/images/brand/logo.png",
+    "alt": "Logo de Centro Medico Miraverde",
+    "pageUsage": ["global"],
+    "notes": "Logo principal migrado del sitio anterior"
+  },
+  {
+    "id": "home-hero",
+    "category": "home",
+    "title": "Imagen destacada de inicio",
+    "sourceUrl": "https://www.cmmiraverde.org/web/image/789-e795b0ab/Masaje.jpg",
+    "localPath": "src/assets/images/home/hero-masaje.jpg",
+    "alt": "Sesion de tratamiento en Centro Medico Miraverde",
+    "pageUsage": ["/"],
+    "notes": "Imagen OG/home destacada"
+  }
+]

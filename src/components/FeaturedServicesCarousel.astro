@@ -1,0 +1,99 @@
+---
+import ServiceCard from "./ServiceCard.astro";
+
+interface CarouselItem {
+  title: string;
+  excerpt: string;
+  href: string;
+}
+
+interface Props {
+  items: CarouselItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="services-carousel" data-carousel>
+  <div class="services-carousel__stage" aria-live="polite">
+    {items.map((item, index) => (
+      <div class="services-carousel__slide" data-carousel-slide data-index={index}>
+        <ServiceCard title={item.title} excerpt={item.excerpt} href={item.href} />
+      </div>
+    ))}
+  </div>
+
+  <div class="services-carousel__controls">
+    <div class="services-carousel__nav">
+      <button class="services-carousel__button" type="button" data-carousel-prev aria-label="Servicio anterior">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </button>
+
+      <div class="services-carousel__status">
+        <span data-carousel-current>01</span>
+        <span>/</span>
+        <span>{String(items.length).padStart(2, "0")}</span>
+      </div>
+
+      <button class="services-carousel__button" type="button" data-carousel-next aria-label="Siguiente servicio">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const carousels = document.querySelectorAll<HTMLElement>("[data-carousel]");
+
+  for (const carousel of carousels) {
+    const slides = Array.from(carousel.querySelectorAll<HTMLDivElement>("[data-carousel-slide]"));
+    const prevButton = carousel.querySelector("[data-carousel-prev]");
+    const nextButton = carousel.querySelector("[data-carousel-next]");
+    const currentText = carousel.querySelector("[data-carousel-current]");
+    let activeIndex = 0;
+
+    const getDistance = (index: number, current: number, length: number) => {
+      const forward = (index - current + length) % length;
+      const backward = forward - length;
+      return Math.abs(forward) <= Math.abs(backward) ? forward : backward;
+    };
+
+    const render = () => {
+      slides.forEach((slide, index) => {
+        const distance = getDistance(index, activeIndex, slides.length);
+        let state = "hidden";
+
+        if (distance === 0) state = "active";
+        else if (distance === -1) state = "prev";
+        else if (distance === 1) state = "next";
+        else if (distance === -2) state = "far-prev";
+        else if (distance === 2) state = "far-next";
+
+        slide.dataset.position = state;
+        slide.setAttribute("aria-hidden", state === "hidden" ? "true" : "false");
+      });
+
+      if (currentText) {
+        currentText.textContent = String(activeIndex + 1).padStart(2, "0");
+      }
+    };
+
+    prevButton?.addEventListener("click", () => {
+      activeIndex = (activeIndex - 1 + slides.length) % slides.length;
+      render();
+    });
+
+    nextButton?.addEventListener("click", () => {
+      activeIndex = (activeIndex + 1) % slides.length;
+      render();
+    });
+
+    render();
+  }
+</script>

@@ -1,0 +1,14 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F7F4EE"/>
+  <circle cx="260" cy="180" r="180" fill="#DCE8E2"/>
+  <circle cx="1360" cy="760" r="220" fill="#E8DDD0"/>
+  <rect x="160" y="180" width="1280" height="540" rx="56" fill="#FFFFFF"/>
+  <rect x="260" y="280" width="420" height="340" rx="36" fill="#8A9A86"/>
+  <rect x="800" y="250" width="430" height="120" rx="28" fill="#F2EFEB"/>
+  <rect x="800" y="410" width="430" height="210" rx="28" fill="#F2EFEB"/>
+  <path d="M470 360h-70a36 36 0 0 0-36 36v108a36 36 0 0 0 36 36h140a36 36 0 0 0 36-36V396a36 36 0 0 0-36-36h-30l-28-34a18 18 0 0 0-24 0l-28 34Z" fill="#F7F4EE"/>
+  <circle cx="470" cy="450" r="42" fill="#8A9A86"/>
+  <text x="800" y="330" fill="#2D2C2A" font-size="68" font-family="Arial, sans-serif" font-weight="700">Contacto y citas</text>
+  <text x="800" y="485" fill="#7A7975" font-size="34" font-family="Arial, sans-serif">WhatsApp, email, telefono y ubicacion</text>
+  <text x="800" y="540" fill="#7A7975" font-size="34" font-family="Arial, sans-serif">para acceder rapido al centro.</text>
+</svg>

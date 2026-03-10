@@ -1,0 +1,14 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F4EFE8"/>
+  <circle cx="1240" cy="210" r="220" fill="#D9E7E1"/>
+  <circle cx="330" cy="760" r="280" fill="#E8DFD2"/>
+  <rect x="120" y="150" width="660" height="600" rx="48" fill="#FFFFFF"/>
+  <rect x="870" y="230" width="460" height="380" rx="52" fill="#8A9A86"/>
+  <rect x="915" y="275" width="370" height="290" rx="36" fill="#F7F4EE"/>
+  <path d="M1050 360h100M1100 310v100" stroke="#8A9A86" stroke-width="24" stroke-linecap="round"/>
+  <circle cx="1100" cy="420" r="92" stroke="#C0B298" stroke-width="18"/>
+  <text x="180" y="315" fill="#2D2C2A" font-size="78" font-family="Arial, sans-serif" font-weight="700">Bienestar integral</text>
+  <text x="180" y="390" fill="#7A7975" font-size="34" font-family="Arial, sans-serif">Atencion medica cercana y multidisciplinar</text>
+  <text x="180" y="445" fill="#7A7975" font-size="34" font-family="Arial, sans-serif">para fisioterapia, nutricion, psicologia</text>
+  <text x="180" y="500" fill="#7A7975" font-size="34" font-family="Arial, sans-serif">y acompanamiento perinatal.</text>
+</svg>

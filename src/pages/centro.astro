@@ -1,0 +1,96 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import ImageGallery from "../components/ImageGallery.astro";
+import WhatsAppCTA from "../components/WhatsAppCTA.astro";
+import { getPageEntry } from "../utils/content";
+import { resolveImage } from "../utils/images";
+
+const page = await getPageEntry("centro");
+const { Content } = await page.render();
+const heroImage = resolveImage(page.data.heroImage);
+const gallery = [
+  { src: resolveImage("images/centre/entrada-centro.jpg"), alt: "Entrada del centro" },
+  { src: resolveImage("images/centre/interior-1.jpg"), alt: "Espacio interior del centro" },
+  { src: resolveImage("images/centre/interior-2.jpg"), alt: "Area de atencion del centro" }
+].filter((item): item is { src: string; alt: string } => Boolean(item.src));
+---
+
+<BaseLayout
+  title={page.data.seoTitle ?? page.data.title}
+  description={page.data.seoDescription ?? page.data.description}
+  canonicalPath="/centro"
+  image={heroImage}
+>
+  <Hero title={page.data.heroTitle ?? page.data.title} intro={page.data.heroIntro ?? page.data.description} image={heroImage} imageAlt="Instalaciones de Centro Medico Miraverde" />
+  
+  <Section title="La excelencia en el trato humano">
+    <div class="split-layout">
+      <div class="prose">
+        <Content />
+      </div>
+      <div class="split-layout__feature">
+        <div class="certification-card">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="certification-card__icon">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="M9 12l2 2 4-4"></path>
+          </svg>
+          <h3>Centro Medico Autorizado</h3>
+          <p>Instalaciones certificadas por el <strong>Servicio Canario de Salud</strong>, garantizando los mas altos estandares de profesionalismo, higiene y seguridad médica en todos nuestros tratamientos y especialidades.</p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  {gallery.length > 0 && (
+    <Section title="Espacios e instalaciones" class="section--alternate">
+      <ImageGallery images={gallery} />
+    </Section>
+  )}
+  <WhatsAppCTA title="Consulta la especialidad adecuada" description="Escribenos por WhatsApp y te orientamos segun tu caso y disponibilidad." />
+</BaseLayout>
+
+<style>
+  .split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 2rem;
+  }
+
+  .certification-card {
+    background: var(--surface-strong);
+    padding: 3rem 2.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .certification-card__icon {
+    color: var(--brand);
+    margin-bottom: 1.5rem;
+  }
+
+  .certification-card h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--brand-dark);
+  }
+
+  .certification-card p {
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 960px) {
+    .split-layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+</style>

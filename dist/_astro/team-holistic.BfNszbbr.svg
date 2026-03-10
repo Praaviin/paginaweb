@@ -1,0 +1,8 @@
+<svg width="800" height="1000" viewBox="0 0 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1000" fill="#F4F1EA"/>
+  <circle cx="400" cy="250" r="110" fill="#DDE9E3"/>
+  <rect x="170" y="450" width="460" height="280" rx="46" fill="#FFFFFF"/>
+  <circle cx="400" cy="590" r="78" stroke="#8A9A86" stroke-width="18"/>
+  <path d="M400 512v156M322 590h156M344 534l112 112M456 534 344 646" stroke="#C0B298" stroke-width="12" stroke-linecap="round"/>
+  <text x="220" y="840" fill="#2D2C2A" font-size="52" font-family="Arial, sans-serif" font-weight="700">Quiro y acupuntura</text>
+</svg>

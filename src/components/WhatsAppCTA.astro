@@ -1,0 +1,25 @@
+---
+import { site } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Pide tu cita por WhatsApp",
+  description = "Te responderemos para orientarte y derivarte a la especialidad adecuada."
+} = Astro.props;
+---
+
+<section class="cta" style="background-color: var(--surface-strong);">
+  <div class="shell cta__inner">
+    <div>
+      <h2>{title}</h2>
+      <p>{description}</p>
+    </div>
+    <a class="button button--primary" href={site.whatsappUrl} target="_blank" rel="noreferrer">
+      Abrir WhatsApp
+    </a>
+  </div>
+</section>

@@ -1,0 +1,8 @@
+<svg width="800" height="1000" viewBox="0 0 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1000" fill="#F6F2EB"/>
+  <circle cx="400" cy="260" r="120" fill="#DCE8E2"/>
+  <rect x="170" y="470" width="460" height="260" rx="46" fill="#FFFFFF"/>
+  <path d="M290 580c34-62 78-96 132-96 54 0 98 34 132 96" stroke="#8A9A86" stroke-width="24" stroke-linecap="round"/>
+  <path d="M400 520v120M340 580h120" stroke="#C0B298" stroke-width="18" stroke-linecap="round"/>
+  <text x="212" y="840" fill="#2D2C2A" font-size="58" font-family="Arial, sans-serif" font-weight="700">Fisioterapia</text>
+</svg>

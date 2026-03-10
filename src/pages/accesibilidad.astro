@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import { getPageEntry } from "../utils/content";
+
+const page = await getPageEntry("accesibilidad");
+const { Content } = await page.render();
+---
+
+<BaseLayout title={page.data.seoTitle ?? page.data.title} description={page.data.seoDescription ?? page.data.description} canonicalPath="/accesibilidad">
+  <Hero title={page.data.title} intro={page.data.description} />
+  <Section>
+    <div class="prose">
+      <Content />
+    </div>
+  </Section>
+</BaseLayout>

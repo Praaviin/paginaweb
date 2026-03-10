@@ -1,0 +1,93 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactMap from "../components/ContactMap.astro";
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import { site } from "../data/site";
+import { getPageEntry } from "../utils/content";
+import { resolveImage } from "../utils/images";
+
+const page = await getPageEntry("contacto");
+const { Content } = await page.render();
+const heroImage = resolveImage(page.data.heroImage);
+---
+
+<BaseLayout
+  title={page.data.seoTitle ?? page.data.title}
+  description={page.data.seoDescription ?? page.data.description}
+  canonicalPath="/contacto"
+  image={heroImage}
+>
+  <Hero
+    eyebrow="Contacto"
+    title={page.data.heroTitle ?? page.data.title}
+    intro={page.data.heroIntro ?? page.data.description}
+    image={heroImage}
+    imageAlt="Contacto y ubicacion de Centro Medico Miraverde"
+  >
+    <div class="button-row">
+      <a class="button button--primary" href={site.whatsappUrl} target="_blank" rel="noreferrer">Pedir cita por WhatsApp</a>
+      <a class="button button--ghost" href={site.googleMapsDirectionsUrl} target="_blank" rel="noreferrer">Abrir en Google Maps</a>
+    </div>
+  </Hero>
+
+  <Section title="Como contactarnos">
+    <div class="split-layout">
+      <div class="prose">
+        <Content />
+      </div>
+
+      <div class="contact-tiles">
+        <div class="contact-tile">
+          <h4>Hablemos</h4>
+          <p><strong>WhatsApp:</strong> <a href={site.whatsappUrl} target="_blank" rel="noreferrer" class="text-link">Enviar mensaje &rarr;</a></p>
+          <p><strong>Email:</strong> <a href={`mailto:${site.email}`}>{site.email}</a></p>
+          {site.phoneNumbers.map((phone) => (
+            <p><strong>Telefono:</strong> <a href={`tel:${phone.replace(/\s+/g, "")}`}>{phone}</a></p>
+          ))}
+        </div>
+
+        <div class="contact-tile">
+          <h4>Visitanos</h4>
+          <p><strong>Direccion:</strong> {site.shortAddress}</p>
+          {site.openingHours.map((item) => (
+            <p><strong>Horario:</strong> {item}</p>
+          ))}
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <div class="full-width-map">
+    <ContactMap />
+  </div>
+</BaseLayout>
+
+<style>
+  .split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-bottom: 4rem;
+  }
+
+  @media (max-width: 960px) {
+    .split-layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+  .full-width-map {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    position: relative;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  
+  /* Override the map border radius for the full-bleed layout */
+  .full-width-map :global(.contact-map) {
+    border-radius: 0;
+  }
+</style>

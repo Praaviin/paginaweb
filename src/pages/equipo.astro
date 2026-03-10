@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import TeamCard from "../components/TeamCard.astro";
+import { resolveImage } from "../utils/images";
+
+const team = (await getCollection("team")).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="Nuestro equipo"
+  description="Profesionales del Centro Medico Miraverde especializados en fisioterapia, osteopatia, acupuntura, nutricion y salud integral."
+  canonicalPath="/equipo"
+>
+  <Hero
+    eyebrow="Profesionales"
+    title="Un equipo centrado en tu bienestar"
+    intro="Cada especialidad se integra en una atencion cercana, personalizada y coordinada."
+    image="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=2070&auto=format&fit=crop"
+  />
+
+  <Section title="Especialistas">
+    <div class="elegant-grid">
+      {team.map((member) => (
+        <TeamCard
+          name={member.data.name}
+          role={member.data.role}
+          excerpt={member.data.excerpt}
+          specialties={member.data.specialties}
+          image={resolveImage(member.data.photo)}
+        />
+      ))}
+    </div>
+  </Section>
+</BaseLayout>

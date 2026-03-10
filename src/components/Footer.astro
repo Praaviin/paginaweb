@@ -1,0 +1,18 @@
+---
+import { legalNavigation, mainNavigation } from "../data/navigation";
+import { site } from "../data/site";
+---
+
+<footer class="site-footer">
+  <div class="shell">
+    <div class="site-footer__bottom">
+      <p><strong>{site.name}</strong> &copy; {new Date().getFullYear()}</p>
+      
+      <ul class="footer-list--inline">
+        {legalNavigation.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</footer>

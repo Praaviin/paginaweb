@@ -1,0 +1,8 @@
+<svg width="800" height="1000" viewBox="0 0 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1000" fill="#F8F4EE"/>
+  <circle cx="400" cy="250" r="110" fill="#E6DCD0"/>
+  <rect x="170" y="450" width="460" height="280" rx="46" fill="#FFFFFF"/>
+  <path d="M280 560c42-28 82-42 120-42s78 14 120 42" stroke="#8A9A86" stroke-width="22" stroke-linecap="round"/>
+  <path d="M320 620c28 22 54 32 80 32s52-10 80-32" stroke="#C0B298" stroke-width="18" stroke-linecap="round"/>
+  <text x="185" y="840" fill="#2D2C2A" font-size="54" font-family="Arial, sans-serif" font-weight="700">Suelo pelvico</text>
+</svg>

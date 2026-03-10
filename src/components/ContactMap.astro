@@ -1,0 +1,78 @@
+---
+import { site } from "../data/site";
+import "leaflet/dist/leaflet.css";
+import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
+
+const markerIcon2xSrc = typeof markerIcon2x === "string" ? markerIcon2x : markerIcon2x.src;
+const markerIconSrc = typeof markerIcon === "string" ? markerIcon : markerIcon.src;
+const markerShadowSrc = typeof markerShadow === "string" ? markerShadow : markerShadow.src;
+---
+
+<div class="contact-map">
+  <div
+    id="contact-map"
+    class="contact-map__canvas"
+    data-lat={site.coordinates.lat}
+    data-lng={site.coordinates.lng}
+    data-zoom={site.mapZoom}
+    data-title={site.name}
+    data-address={site.shortAddress}
+    data-marker-icon={markerIconSrc}
+    data-marker-icon-2x={markerIcon2xSrc}
+    data-marker-shadow={markerShadowSrc}
+  ></div>
+
+  <div class="contact-map__panel">
+    <p>{site.shortAddress}</p>
+    <a class="contact-map__btn" href={site.googleMapsDirectionsUrl} target="_blank" rel="noreferrer">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+        <circle cx="12" cy="10" r="3"></circle>
+      </svg>
+      Ver en Google Maps
+    </a>
+  </div>
+</div>
+
+<script>
+  const mapRoot = document.getElementById("contact-map");
+
+  if (mapRoot) {
+    import("leaflet")
+      .then((L) => {
+        const lat = Number(mapRoot.dataset.lat);
+        const lng = Number(mapRoot.dataset.lng);
+        const zoom = Number(mapRoot.dataset.zoom);
+        const title = mapRoot.dataset.title ?? "";
+        const address = mapRoot.dataset.address ?? "";
+        const iconUrl = mapRoot.dataset.markerIcon ?? "";
+        const iconRetinaUrl = mapRoot.dataset.markerIcon2x ?? "";
+        const shadowUrl = mapRoot.dataset.markerShadow ?? "";
+
+        const map = L.map(mapRoot, {
+          scrollWheelZoom: false
+        }).setView([lat, lng], zoom);
+
+        L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+        }).addTo(map);
+
+        const customPinSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#8A9A86" stroke="#ffffff" stroke-width="1.5" style="width: 48px; height: 48px; filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.3));"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3" fill="#ffffff"></circle></svg>`;
+
+        const icon = L.divIcon({
+          html: customPinSvg,
+          className: "custom-brand-pin",
+          iconSize: [48, 48],
+          iconAnchor: [24, 48],
+          popupAnchor: [0, -48]
+        });
+
+        L.marker([lat, lng], { icon }).addTo(map).bindPopup(`<strong>${title}</strong><br>${address}`);
+      })
+      .catch(() => {
+        mapRoot.classList.add("contact-map__canvas--hidden");
+      });
+  }
+</script>
