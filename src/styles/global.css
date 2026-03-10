@@ -290,8 +290,7 @@ a {
 .section__header h2,
 .cta h2 {
   margin: 0;
-  font-size: clamp(2.5rem, 4vw, 4rem);
-  /* Scaled down from 5.5rem max */
+  font-size: clamp(2rem, 5vw, 4rem);
   line-height: 1.1;
   letter-spacing: -0.03em;
   font-weight: 300;
@@ -1128,30 +1127,48 @@ a {
 
 @media (max-width: 640px) {
 
-  .services-carousel__stage {
-    min-height: 22rem;
-    /* Adjusted for mobile */
+  .shell {
+    width: min(calc(100% - 2rem), var(--max-width));
   }
 
-  .hero,
+  .services-carousel__stage {
+    min-height: 22rem;
+  }
+
+  .hero {
+    padding: 1.5rem 0 3rem;
+  }
+
+  .hero__inner {
+    padding: 2.5rem 1.5rem;
+    min-height: 50vh;
+    border-radius: calc(var(--radius) - 8px);
+  }
+
   .section,
   .cta,
   .site-footer {
-    padding: 4rem 0;
+    padding: 2.5rem 0;
   }
 
   .hero__content h1,
   .section__header h2,
   .cta h2 {
-    font-size: 2.75rem;
+    font-size: 2.25rem;
   }
 
   .button,
   .button-row .button {
     width: 100%;
+    padding: 0.9rem 1.5rem;
   }
 
   .cta__inner {
-    padding: 3rem 1.5rem;
+    padding: 2.5rem 1.25rem;
+    border-radius: calc(var(--radius) - 8px);
+  }
+
+  .card__body {
+    padding: 1.5rem;
   }
 }

@@ -40,18 +40,18 @@ const heroImage = resolveImage(page.data.heroImage);
       <div class="contact-tiles">
         <div class="contact-tile">
           <h4>Hablemos</h4>
-          <p><strong>WhatsApp:</strong> <a href={site.whatsappUrl} target="_blank" rel="noreferrer" class="text-link">Enviar mensaje &rarr;</a></p>
-          <p><strong>Email:</strong> <a href={`mailto:${site.email}`}>{site.email}</a></p>
+          <p style="margin-bottom: 0.5rem;"><strong>WhatsApp:</strong> <a href={site.whatsappUrl} target="_blank" rel="noreferrer" class="text-link">Enviar mensaje &rarr;</a></p>
+          <p style="margin-bottom: 0.5rem;"><strong>Email:</strong> <a href={`mailto:${site.email}`}>{site.email}</a></p>
           {site.phoneNumbers.map((phone) => (
-            <p><strong>Telefono:</strong> <a href={`tel:${phone.replace(/\s+/g, "")}`}>{phone}</a></p>
+            <p style="margin-bottom: 0.5rem;"><strong>Telefono:</strong> <a href={`tel:${phone.replace(/\s+/g, "")}`}>{phone}</a></p>
           ))}
         </div>
 
         <div class="contact-tile">
           <h4>Visitanos</h4>
-          <p><strong>Direccion:</strong> {site.shortAddress}</p>
+          <p style="margin-bottom: 0.5rem;"><strong>Direccion:</strong> {site.shortAddress}</p>
           {site.openingHours.map((item) => (
-            <p><strong>Horario:</strong> {item}</p>
+            <p style="margin-bottom: 0.5rem;"><strong>Horario:</strong> {item}</p>
           ))}
         </div>
       </div>
@@ -72,12 +72,6 @@ const heroImage = resolveImage(page.data.heroImage);
     margin-bottom: 4rem;
   }
 
-  @media (max-width: 960px) {
-    .split-layout {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-  }
   .full-width-map {
     width: 100vw;
     margin-left: calc(-50vw + 50%);
@@ -89,5 +83,12 @@ const heroImage = resolveImage(page.data.heroImage);
   /* Override the map border radius for the full-bleed layout */
   .full-width-map :global(.contact-map) {
     border-radius: 0;
+  }
+
+  @media (max-width: 960px) {
+    .split-layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
   }
 </style>

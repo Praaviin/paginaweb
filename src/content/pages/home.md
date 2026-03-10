@@ -5,7 +5,7 @@ seoTitle: "Centro Medico Miraverde | Salud y bienestar en Costa Adeje"
 seoDescription: "Centro medico en Costa Adeje con atencion personalizada, profesionales multilingues y servicios de fisioterapia, osteopatia, acupuntura, nutricion y bienestar."
 heroTitle: "Centro medico en Costa Adeje"
 heroIntro: "Clinica multidisciplinar con servicios de fisioterapia, osteopatia, psicologia, nutricion, preparacion al parto y mas, adaptados a tus necesidades."
-heroImage: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=2070&auto=format&fit=crop"
+heroImage: "images/services/fisioterapia/hero.jpg"
 ---
 
 En **Centro Medico Miraverde** somos un equipo de profesionales comprometidos con tu bienestar desde 2004. Ofrecemos una amplia gama de servicios de salud multidisciplinarios, autorizados por el Servicio Canario de Salud, en un entorno cercano y acogedor.
